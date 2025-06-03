@@ -435,6 +435,12 @@
                                             "enabled": "{= ${ui>/editMode} === 'Editable'}",
                                             "visible": true,
                                             "text": "{i18n>CustomActionOPHeader}"
+                                        },
+                                        "CustomCriticalDialog": {
+                                            "press": "sap.fe.featureShowcase.mainApp.ext.CustomActions.openCriticalDialog",
+                                            "enabled": true,
+                                            "visible": true,
+                                            "text": "{i18n>CustomCriticalDialog}" 
                                         }
                                     }
                                 },
