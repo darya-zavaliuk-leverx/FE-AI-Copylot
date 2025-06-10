@@ -261,7 +261,6 @@ module.exports = async (srv) => {
                     criticality_code : i % 4
                 });
             }
-        console.log("Created Chart Data Entities!");
         return chartEntities;
     }
 

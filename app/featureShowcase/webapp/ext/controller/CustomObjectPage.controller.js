@@ -1,3 +1,23 @@
+// Define constants for static values
+const DATA_MODEL_PATH = "sap/fe/featureShowcase/mainApp/ext/controller/data.json";
+const GRAPH_MODEL_NAME = "graph";
+const SETTINGS_MODEL_NAME = "settings";
+const INITIAL_SETTINGS = {
+	source: "atomicCircle",
+	orientation: "LeftRight",
+	arrowPosition: "End",
+	arrowOrientation: "ParentOf",
+	nodeSpacing: 55,
+	mergeEdges: false
+};
+const MICROCHART_DATA = [
+	{ title: "USA", color: "Neutral" },
+	{ title: "EMEA", color: "Error" },
+	{ title: "APAC", value: -20, color: "Good" },
+	{ title: "LTA", color: "Critical", isNegative: true },
+	{ title: "ALPS", max: 20, color: "Good" }
+];
+
 sap.ui.define([
 	"sap/fe/core/PageController",
 	"sap/ui/model/json/JSONModel",
@@ -8,55 +28,28 @@ sap.ui.define([
 		onInit: function () {
 			PageController.prototype.onInit.apply(this);
 
-			var oModel = new JSONModel(sap.ui.require.toUrl("sap/fe/featureShowcase/mainApp/ext/controller/data.json"));
+			var oModel = new JSONModel(sap.ui.require.toUrl(DATA_MODEL_PATH));
 			var that = this;
 
-			this.getView().setModel(oModel, 'graph');
+			this.getView().setModel(oModel, GRAPH_MODEL_NAME);
 
-			this._oModelSettings = new JSONModel({
-				source: "atomicCircle",
-				orientation: "LeftRight",
-				arrowPosition: "End",
-				arrowOrientation: "ParentOf",
-				nodeSpacing: 55,
-				mergeEdges: false
-			});
+			this._oModelSettings = new JSONModel(INITIAL_SETTINGS);
 
-			this.getView().setModel(this._oModelSettings, "settings");
+			this.getView().setModel(this._oModelSettings, SETTINGS_MODEL_NAME);
 
 			var fnSetContent = function (oNode) {
+				const chartData = MICROCHART_DATA.map(function (item) {
+					return new ComparisonMicroChartData({
+						title: item.title,
+						value: typeof item.value !== 'undefined' ? item.value : (item.isNegative ? Math.floor(Math.random() * 60) * -1 : (item.max ? Math.floor(Math.random() * item.max) : Math.floor(Math.random() * 60))),
+						color: item.color
+					});
+				});
 				oNode.setContent(new ComparisonMicroChart({
 					size: "M",
 					scale: "M",
-					data: [
-						new ComparisonMicroChartData({
-							title: "USA",
-							value: Math.floor(Math.random() * 60),
-							color: "Neutral"
-						}),
-						new ComparisonMicroChartData({
-							title: "EMEA",
-							value: Math.floor(Math.random() * 60),
-							color: "Error"
-						}),
-						new ComparisonMicroChartData({
-							title: "APAC",
-							value: -20,
-							color: "Good"
-						}),
-						new ComparisonMicroChartData({
-							title: "LTA",
-							value: Math.floor(Math.random() * 60) * -1,
-							color: "Critical"
-						}),
-						new ComparisonMicroChartData({
-							title: "ALPS",
-							value: Math.floor(Math.random() * 20),
-							color: "Good"
-						})
-					]
+					data: chartData
 				}).addStyleClass("sapUiSmallMargin"));
-
 			};
 
 			oModel.attachRequestCompleted(function (oData) {
