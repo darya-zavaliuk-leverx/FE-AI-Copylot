@@ -8,6 +8,9 @@
   },
   "license": "UNLICENSED",
   "private": true,
+  "engines": {
+    "node": ">=16"
+  },
   "dependencies": {
     "@sap/cds": "^8.2",
     "cds-launchpad-plugin": "^2.0.1",
@@ -16,13 +19,17 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1.1.0",
-    "@sap/ux-specification": "^1.90.12"
+    "@sap/ux-specification": "^1.90.12",
+    "eslint": "^8",
+    "@sap/eslint-plugin-cds": "^3"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "lint": "eslint --ext .js srv"
   },
   "eslintConfig": {
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "plugin:@sap/cds/recommended-legacy"],
+    "plugins": ["@sap/cds"],
     "env": {
       "es2020": true,
       "node": true,
@@ -43,7 +50,8 @@
     },
     "rules": {
       "no-console": "off",
-      "require-atomic-updates": "off"
+      "require-atomic-updates": "off",
+      "no-prototype-builtins": "off"
     }
   },
   "sapux": [
