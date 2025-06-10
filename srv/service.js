@@ -1,4 +1,4 @@
-const cds = require("@sap/cds");
+const cdsService = require("@sap/cds");
 
 module.exports = async (srv) => {
 
@@ -65,7 +65,7 @@ module.exports = async (srv) => {
         req.data.chartEntities = [];
         for(let i = 1; i <= 10; i++) {
             req.data.chartEntities.push({
-                ID : cds.utils.uuid(),
+                ID : cdsService.utils.uuid(),
                 parent_ID : req.data.ID,
                 uom_code : 'EA',
                 dimensions : i,
@@ -149,7 +149,7 @@ module.exports = async (srv) => {
             const date = new Date();
             let date2 = new Date(date.toISOString());
             date2.setMonth(date2.getMonth()+3);
-            let uuid = cds.utils.uuid();
+            let uuid = cdsService.utils.uuid();
             rootEntities.push({
                 ID: uuid,
                 contact_ID: (i >= contacts.length) ? contacts[0].ID : contacts[i].ID,
@@ -187,14 +187,14 @@ module.exports = async (srv) => {
                 chartEntities: await createChartEntities(10,uuid),
             });
         }
-        await cds.tx(req).run(INSERT.into(RootEntities).entries(rootEntities));
+        await cdsService.tx(req).run(INSERT.into(RootEntities).entries(rootEntities));
         return req.notify(`All entitiy data has been reseted!`);
     });
 
     async function createChildEntities2(countRootEntities) {
         const childEntities2IDs = [];
         for(let i = 0; i <= countRootEntities; i++) {
-            childEntities2IDs.push(cds.utils.uuid());
+            childEntities2IDs.push(cdsService.utils.uuid());
         }
         const childEntities2 = [];
         for(let i = 0; i <= countRootEntities; i++) {
@@ -222,7 +222,7 @@ module.exports = async (srv) => {
             }
 
             childEntities1.push({
-                ID: cds.utils.uuid(),
+                ID: cdsService.utils.uuid(),
                 parent_ID: parent_ID,
                 //Calculating values, just to have values for the UI. The generation has no special logic behind it.
                 fieldWithPerCent: (Math.random()+0.1)*100,
@@ -239,7 +239,7 @@ module.exports = async (srv) => {
         let childEntities3 = [];
         for(let i = 0; i < amount; i++) {
             childEntities3.push({
-                ID: cds.utils.uuid(),
+                ID: cdsService.utils.uuid(),
                 parent_ID: parent_ID,
                 field: `child entity ${i}`,
             });
@@ -251,7 +251,7 @@ module.exports = async (srv) => {
         let chartEntities = [];
             for(let i = 1; i <= amount; i++) {
                 chartEntities.push({
-                    ID : cds.utils.uuid(),
+                    ID : cdsService.utils.uuid(),
                     parent_ID : parent_ID,
                     uom_code : 'EA',
                     dimensions : i,
