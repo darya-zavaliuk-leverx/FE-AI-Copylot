@@ -65,7 +65,11 @@
     "sap.ui5": {
         "resources": {
             "js": [],
-            "css": []
+            "css": [
+                {
+                    "uri": "css/highlightRows.css"
+                }
+            ]
         },
         "dependencies": {
             "minUI5Version": "1.93.0",
@@ -217,7 +221,12 @@
                                             "property": "starsValue",
                                             "template": "sap.fe.featureShowcase.mainApp.ext.CustomFilter-Rating"
                                         },
-                                        "validFrom": { 
+                                        "criticality_code": {
+                                            "label": "{i18n>criticalityFilter}",
+                                            "property": "criticality_code",
+                                            "template": "sap.fe.featureShowcase.mainApp.ext.CustomFilter-Criticality"
+                                        },
+                                        "validFrom": {
                                             "settings": {
                                                 "defaultValues": [{"operator": "LASTYEARS", "values": [10]}],
                                                 "operatorConfiguration": [

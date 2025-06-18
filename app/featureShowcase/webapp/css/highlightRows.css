@@ -1,0 +1,26 @@
+/* Custom styles to highlight entire table rows */
+.sapMLIBHighlightWarning,
+.sapMLIBHighlightSuccess,
+.sapMLIBHighlightError,
+.sapMLIBHighlightInformation {
+    width: 100%;
+    left: 0;
+    border-right: none;
+    opacity: 0.2;
+}
+
+.sapMLIBHighlightWarning {
+    background: #ffd85b;
+}
+
+.sapMLIBHighlightSuccess {
+    background: #9de79d;
+}
+
+.sapMLIBHighlightError {
+    background: #f7a7a7;
+}
+
+.sapMLIBHighlightInformation {
+    background: #8fd4ff;
+}
