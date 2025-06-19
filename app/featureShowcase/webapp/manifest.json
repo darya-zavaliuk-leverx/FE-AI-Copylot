@@ -434,6 +434,12 @@
                                             "enabled": "{= ${ui>/editMode} === 'Editable'}",
                                             "visible": true,
                                             "text": "{i18n>CustomActionOPHeader}"
+                                        },
+                                        "CriticalActionOPHeader": {
+                                            "press": "sap.fe.featureShowcase.mainApp.ext.CustomActions.onCriticalAction",
+                                            "enabled": true,
+                                            "visible": true,
+                                            "text": "{i18n>criticalAction}"
                                         }
                                     }
                                 },

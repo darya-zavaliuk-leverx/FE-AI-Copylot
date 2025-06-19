@@ -16,6 +16,16 @@ sap.ui.define([
                return true;
             }
             return false;
+        },
+
+        onCriticalAction: function(oEvent) {
+            var sActionName = "service1.EntityContainer/criticalAction";
+            var mParameters = {
+                contexts: oEvent.getSource().getBindingContext(),
+                model: oEvent.getSource().getModel(),
+                label: "Confirm"
+            };
+            this.editFlow.invokeAction(sActionName, mParameters);
         }
     };
 });
