@@ -55,16 +55,10 @@
             "phone@2": "",
             "tablet": "",
             "tablet@2": ""
-        },
-        "deviceTypes": {
-            "desktop": true,
-            "tablet": true,
-            "phone": true
         }
     },
     "sap.ui5": {
         "resources": {
-            "js": [],
             "css": [
                 {
                     "uri": "css/highlightRows.css"
@@ -186,8 +180,7 @@
                                                     "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#variant2"
                                                 }
                                             ],
-                                            "hideTableTitle": false,
-                                            "showCounts": true
+                                            
                                         }
                                     },
                                     "columns": {
@@ -195,7 +188,6 @@
                                             "key": "customColumnLR",
                                             "header": "{i18n>validityPeriodLR}",
                                             "template": "sap.fe.featureShowcase.mainApp.ext.CustomColumn-DateRangeLR",
-                                            "availability": "Default",
                                             "horizontalAlign": "Center",
                                             "width": "auto",
                                             "properties": [
@@ -317,8 +309,7 @@
                                                     "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#variant4"
                                                 }
                                             ],
-                                            "hideTableTitle": false,
-                                            "showCounts": true
+                                            
                                         },
                                         "enableExport": true
                                     },
@@ -329,7 +320,6 @@
                                         "CustomColumnOnObjectPage": {
                                             "header": "{i18n>customColumn}",
                                             "template": "sap.fe.featureShowcase.mainApp.ext.CustomColumn-ProcessFlow",
-                                            "availability": "Default",
                                             "properties": [
                                                 "booleanProperty",
                                                 "field"
