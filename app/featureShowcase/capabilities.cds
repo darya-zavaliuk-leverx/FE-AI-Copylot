@@ -38,34 +38,7 @@ annotate service1 with @(
     ],
 );
 
-annotate service1.ChartDataEntities with @(
-    //Search-Term: #ChartSection
-    Aggregation.ApplySupported : {
-        Transformations          : [
-            'aggregate',
-            'topcount',
-            'bottomcount',
-            'identity',
-            'concat',
-            'groupby',
-            'filter',
-            'expand',
-            'top',
-            'skip',
-            'orderby',
-            'search'
-        ],
-        Rollup                   : #None,
-        PropertyRestrictions     : true,
-        GroupableProperties : [
-            dimensions,
-            criticality_code
-        ],
-        AggregatableProperties : [
-            {Property : integerValue},
-        ],
-    }
-);
+// Removed aggregation support
 
 annotate service1.ChartDataEntities with {
     //Search-Term: #ChartSection

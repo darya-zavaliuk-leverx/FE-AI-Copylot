@@ -24,12 +24,12 @@ annotate service.ChartDataEntities with @(
     UI.Chart : {
         Title       : '{i18n>chart}',
         ChartType   : #Column,
-        Measures    : [maxAmount],
+        Measures    : [integerValue],
         Dimensions  : [dimensions],
         MeasureAttributes   : [
             {
                 $Type       : 'UI.ChartMeasureAttributeType',
-                Measure     : maxAmount,
+                Measure     : integerValue,
                 Role        : #Axis1
             },
         ],
@@ -176,28 +176,4 @@ annotate service.ChartDataEntities with @(
         Value                   : integerValue,
         Criticality             : criticality_code
     },
-);
-
-annotate service.ChartDataEntities with @(
-    //Search-Term: #ChartSection
-    Analytics.AggregatedProperties : [
-        {
-            Name                 : 'minAmount',
-            AggregationMethod    : 'min',
-            AggregatableProperty : 'integerValue',
-            ![@Common.Label]     : 'Minimal Net Amount'
-        },
-        {
-            Name                 : 'maxAmount',
-            AggregationMethod    : 'max',
-            AggregatableProperty : 'integerValue',
-            ![@Common.Label]     : 'Maximal Net Amount'
-        },
-        {
-            Name                 : 'avgAmount',
-            AggregationMethod    : 'average',
-            AggregatableProperty : 'integerValue',
-            ![@Common.Label]     : 'Average Net Amount'
-        }
-    ],
 );

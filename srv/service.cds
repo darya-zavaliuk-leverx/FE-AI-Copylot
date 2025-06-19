@@ -65,6 +65,13 @@ service service1 @(path : '/srv1') {
 
     action criticalAction();
 
+    type NumberPair {
+        first  : Integer;
+        second : Integer;
+    }
+
+    action randomNumbers returns NumberPair;
+
 
     entity ChildEntities1       as projection on persistence.ChildEntities1;
     entity ChildEntities2       as projection on persistence.ChildEntities2;

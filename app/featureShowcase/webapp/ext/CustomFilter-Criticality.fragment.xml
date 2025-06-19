@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <!-- Search-Term: "customFilter" -->
+    <HBox alignItems="Center" core:require="{handler: 'sap/fe/featureShowcase/mainApp/ext/CustomFilter-Criticality'}" width="100%">
+        <Select id="CriticalitySelect" class="sapUiTinyMarginBegin"
+                items="{path: '/Criticality'}"
+                selectedKey="{path: 'filterValues>', type: 'sap.fe.macros.filter.type.Value'}">
+            <core:ListItem key="{code}" text="{name}" />
+        </Select>
+        <core:Icon src="sap-icon://reset" press="handler.onReset" class="sapUiSmallMarginBegin" />
+    </HBox>
+</core:FragmentDefinition>

@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <HBox>
+        <Text text="{random>/first}"/>
+        <Icon src="{= ${random>/first} > ${random>/second} ? 'sap-icon://arrow-top' : ${random>/first} < ${random>/second} ? 'sap-icon://arrow-bottom' : 'sap-icon://compare'}" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+        <Text text="{random>/second}"/>
+    </HBox>
+</core:FragmentDefinition>

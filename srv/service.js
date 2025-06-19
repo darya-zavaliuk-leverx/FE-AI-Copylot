@@ -131,6 +131,16 @@ module.exports = async (srv) => {
         return req.notify(`Critical action pressed`); //Search-Term: #MessageToast
     });
 
+    srv.on("randomNumbers", async req => {
+        try {
+            const res = await fetch("https://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=2");
+            const numbers = await res.json();
+            return { first: numbers[0], second: numbers[1] };
+        } catch (e) {
+            req.error(502, "Failed to fetch numbers");
+        }
+    });
+
     //Reseting all entities to there default state
     srv.on("resetEntities", async req => { 
         //Delete current data
