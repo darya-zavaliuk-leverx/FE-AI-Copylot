@@ -198,6 +198,17 @@
                                                 "placement": "After",
                                                 "anchor": "DataField::fieldWithCriticality"
                                             }
+                                        },
+                                        "RandomDiffColumn": {
+                                            "key": "randomDiffColumnLR",
+                                            "header": "{i18n>randomDiff}",
+                                            "template": "sap.fe.featureShowcase.mainApp.ext.CustomColumn-RandomDiff",
+                                            "horizontalAlign": "Center",
+                                            "width": "auto",
+                                            "position": {
+                                                "placement": "After",
+                                                "anchor": "CustomColumn"
+                                            }
                                         }
                                     }
                                 },
